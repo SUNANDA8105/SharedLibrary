@@ -8,3 +8,8 @@ def newDeploy(ip,appname){
   deploy adapters: [tomcat9(credentialsId: '8e0a0c6d-92d5-454c-8750-dd2db08e6daf', path: '', 
                             url: "${ip}")], contextPath: "${appname}", war: '**/*.war'
                             }
+def newTest(jobname)
+{
+  echo "${jobname}"
+  sh "java -jar /home/ubuntu/.jenkins/workspace/${jobname}/testing.jar"
+}
